@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
 
 void main()=>runApp(new MaterialApp(
@@ -12,16 +13,16 @@ class MyApp extends StatefulWidget {
 }
 class _MyAppState extends State<MyApp> {
   int _counter = 0;
-
+  String _value="";
   void _incrementCounter() {
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
       _counter++;
       print(_counter);
+    });
+  }
+  void _onchange(String val) {
+    setState(() {
+      _value=val;
     });
   }
   @override
@@ -60,7 +61,7 @@ class _MyAppState extends State<MyApp> {
 
           ),
         ),
-        bottom: PreferredSize(
+        /*bottom: PreferredSize(
           child: Container(
             color: Colors.grey,
             height: 50.0,
@@ -71,23 +72,132 @@ class _MyAppState extends State<MyApp> {
                 color: Colors.red,
                 fontSize: 25.0,
                 fontStyle: FontStyle.italic,
+                fontWeight: FontWeight.bold,
 
 
               ),
             ),
           ),
           preferredSize: Size.fromHeight(50.0),
-        ),
+        ),*/
       ),
       body: Center(
-        child:Text(
+
+        child:Column(
+
+          children: <Widget> [
+            ButtonBar(
+              alignment: MainAxisAlignment.spaceBetween,
+              children:<Widget> [
+                IconButton(icon: Icon(Icons.home), onPressed: null),
+                IconButton(icon: Icon(Icons.people), onPressed: null),
+                IconButton(icon: Icon(Icons.add), onPressed: null),
+                IconButton(icon: Icon(Icons.search), onPressed: null),
+              ],
+            ),
+            Text(
           "My First App $_counter",
           style: TextStyle(
             fontSize: 35.0,
             color: Colors.red,
+
           ),
+            ),
+            Text(
+              "My First App $_counter",
+              style: TextStyle(
+                fontSize: 35.0,
+                color: Colors.red,
+
+              ),
+            ),
+            Ink(
+              decoration: ShapeDecoration(
+                color: Colors.blue,
+                shape: CircleBorder()
+              ),
+              child: IconButton(
+                icon: Icon(Icons.add),
+                color: Colors.white,
+                onPressed: (){
+                  setState(() {
+                    _counter+=2;
+                  });
+                },
+              ),
+            ),
+            RichText(
+                text: TextSpan(
+                  text: 'Mithun',style:TextStyle(
+                  color: Colors.purple,
+                  fontSize: 30.0,
+                  fontWeight: FontWeight.bold,
+                  decoration: TextDecoration.underline,
+                  decorationStyle: TextDecorationStyle.dotted,
+                  fontStyle: FontStyle.italic,
+
+                ),
+                  children: <TextSpan>[
+                    TextSpan(text: 'Computer' ,
+                      style: TextStyle(
+                        color: Colors.orange,
+                        decoration: TextDecoration.none,
+                      )
+                    ),
+                    TextSpan(text: 'Education'),
+
+                  ]
+                ),
+            ),
+            Text(
+              _value,
+              style: TextStyle(
+                fontSize: 35.0,
+                color: Colors.red,
+
+              ),
+            ),
+            TextField(
+              decoration: new InputDecoration(
+                labelText: "Enter the phone number",
+                hintText: "Phone Number",
+                icon:  new Icon(Icons.phone)
+              ),
+                  onSubmitted: _onchange,
+              keyboardType: TextInputType.number,
+            ),
+            Center(
+              child: Container(
+                //margin: const EdgeInsets.only(top: 300.0),
+                child: ButtonBar(
+                  children: <Widget>[
+                    FlatButton(
+                      onPressed: (){
+
+                      },
+                      child: Text('Login'),
+                      color: Colors.blue,
+                    ),
+                    FlatButton(
+                      onPressed: (){
+
+                      },
+                      child: Text('Cancel'),
+                      color: Colors.red,
+                    ),
+
+                  ],
+                ),
+
+              ),
+            )
+          ],
+          ),
+
         ),
-      ),
+
+
+
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: _incrementCounter,
@@ -151,7 +261,7 @@ class _MyAppState extends State<MyApp> {
 
         ),
       ),
-      persistentFooterButtons: <Widget> [
+      /*persistentFooterButtons: <Widget> [
         RaisedButton(
           elevation: 10,
           onPressed: (){
@@ -168,7 +278,7 @@ class _MyAppState extends State<MyApp> {
           color: Colors.red,
           child: Icon(Icons.clear),
         )
-      ],
+      ],*/
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(
@@ -242,7 +352,7 @@ class _MyAppState extends State<MyApp> {
 
         ),
       ),
-      backgroundColor: Colors.tealAccent,
+      //backgroundColor: Colors.tealAccent,
     );
   }
 }
