@@ -92,6 +92,7 @@ class _MyAppState extends State<MyApp> {
         child: Icon(Icons.add),
         onPressed: _incrementCounter,
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       drawer: Drawer(
         elevation: 16.0,
         child: Column(
@@ -110,11 +111,138 @@ class _MyAppState extends State<MyApp> {
                 )
               ],
     ),
+            ListTile(
+              title: Text("All Inbox"),
+              leading: Icon(Icons.mail),
+            ),
+            Divider(
+              height: 0.1,
+            ),
+            ListTile(
+              title: Text("Primary"),
+              leading: Icon(Icons.inbox),
+            ),
+            Divider(
+              height: 0.1,
+            ),
+            ListTile(
+              title: Text("Social"),
+              leading: Icon(Icons.people),
+            ),
+            Divider(
+              height: 0.1,
+            ),
+            ListTile(
+              title: Text("Promotion"),
+              leading: Icon(Icons.local_offer),
+            ),
+            Divider(
+              height: 0.1,
+            ),
+            ListTile(
+              title: Text("All Inbox"),
+              leading: Icon(Icons.mail),
+            ),
+            Divider(
+              height: 0.1,
+            ),
           ],
 
 
         ),
       ),
+      persistentFooterButtons: <Widget> [
+        RaisedButton(
+          elevation: 10,
+          onPressed: (){
+            print('onclick');
+          },
+          color: Colors.green,
+          child: Icon(Icons.add),
+        ),
+        RaisedButton(
+          elevation: 10,
+          onPressed: (){
+            print('onclick');
+          },
+          color: Colors.red,
+          child: Icon(Icons.clear),
+        )
+      ],
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+            title: Text('Home'),
+            icon: Icon(Icons.home)
+          ),
+          BottomNavigationBarItem(
+              title: Text('Search'),
+              icon: Icon(Icons.search)
+          )
+        ],
+        onTap: (int index){
+          print(index);
+        },
+      ),
+      endDrawer: Drawer(
+        elevation: 16.0,
+        child: Column(
+          children: <Widget>[
+            UserAccountsDrawerHeader(
+              accountName: Text("mithun"),
+              accountEmail: Text("mithunmi97@outlook.com"),
+              currentAccountPicture: CircleAvatar(
+                backgroundColor: Colors.white,
+                child: Text("XYZ"),
+              ),
+              otherAccountsPictures: [
+                CircleAvatar(
+                  backgroundColor: Colors.white,
+                  child: Text("XYZ"),
+                )
+              ],
+            ),
+            ListTile(
+              title: Text("All Inbox"),
+              leading: Icon(Icons.mail),
+            ),
+            Divider(
+              height: 0.1,
+            ),
+            ListTile(
+              title: Text("Primary"),
+              leading: Icon(Icons.inbox),
+            ),
+            Divider(
+              height: 0.1,
+            ),
+            ListTile(
+              title: Text("Social"),
+              leading: Icon(Icons.people),
+            ),
+            Divider(
+              height: 0.1,
+            ),
+            ListTile(
+              title: Text("Promotion"),
+              leading: Icon(Icons.local_offer),
+            ),
+            Divider(
+              height: 0.1,
+            ),
+            ListTile(
+              title: Text("All Inbox"),
+              leading: Icon(Icons.mail),
+            ),
+            Divider(
+              height: 0.1,
+            ),
+          ],
+
+
+        ),
+      ),
+      backgroundColor: Colors.tealAccent,
     );
   }
 }
