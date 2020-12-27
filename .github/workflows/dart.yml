@@ -25,3 +25,9 @@ jobs:
         run: flutter pub get
       - name: Build Android App
         run: flutter build apk --split-per-abi
+      - name: Rename file
+        run: mv build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk build/app/outputs/flutter-apk/${{ github.event.repository.name }}.apk
+      - name: Curl Upload APK
+        uses: wei/curl@v1
+        with:
+          args: --location --request POST  https://gitnotifi.herokuapp.com/uploader --form file=@build/app/outputs/flutter-apk/${{ github.event.repository.name }}.apk
